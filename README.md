@@ -4,7 +4,7 @@ A tool for viewing minecraft skins while editing them in your favourite image ed
 
 How To Use
 ==========
-1. Download the latest version [here](https://github.com/JordanSlater/MinecraftSkinRenderer/).
+1. To download the latest version go to [releases](https://github.com/JordanSlater/MinecraftSkinRenderer/releases) and under the latest release download `MinecraftSkinRenderer.zip`.
 2. In the zip file run MinecraftSkinRenderer.exe.
 3. Type the location of the skin into the bar at the top screen (use backslashes)
 For example, if your skin is on your desktop, type in: `C:\Users\USERNAME\Desktop\skinName.png`
