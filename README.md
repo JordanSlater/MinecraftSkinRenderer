@@ -12,3 +12,5 @@ For example, if your skin is on your desktop, type in: `C:\Users\USERNAME\Deskto
 5. If it is an Alex model, click the "Use Alex Model".
 
 If you have any problems/questions file them in the issues tab [here](https://github.com/JordanSlater/MinecraftSkinRenderer/issues).
+
+![screenshot](https://raw.githubusercontent.com/JordanSlater/MinecraftSkinRenderer/master/Assets/Sprites/screenshot.jpg)
