@@ -33,36 +33,6 @@ public class PrismController : MonoBehaviour
         { Face.Right, new int[]{ 20, 23, 21, 22 } },
     };
 
-
-    int[][] quadPermutations = new int[][] {
-        new int[] {0,1,2,3},
-        new int[] {1,0,2,3},
-        new int[] {2,0,1,3},
-        new int[] {0,2,1,3},
-        new int[] {1,2,0,3},
-        new int[] {2,1,0,3},
-        new int[] {2,1,3,0},
-        new int[] {1,2,3,0},
-        new int[] {3,2,1,0},
-        new int[] {2,3,1,0},
-        new int[] {1,3,2,0},
-        new int[] {3,1,2,0},
-        new int[] {3,0,2,1},
-        new int[] {0,3,2,1},
-        new int[] {2,3,0,1},
-        new int[] {3,2,0,1},
-        new int[] {0,2,3,1},
-        new int[] {2,0,3,1},
-        new int[] {1,0,3,2},
-        new int[] {0,1,3,2},
-        new int[] {3,1,0,2},
-        new int[] {1,3,0,2},
-        new int[] {0,3,1,2},
-        new int[] {3,0,1,2},
-    };
-
-    int permutation = 0;
-
     MeshFilter meshFilter;
 
     [Tooltip("X coord of the bottom left corner of the front face. Measured from the left of the skin image.")]
@@ -90,17 +60,7 @@ public class PrismController : MonoBehaviour
             { Face.Left, new Rect(SkinLocationX + Width, SkinLocationY, Depth, Height) },
             { Face.Right, new Rect(SkinLocationX - Depth, SkinLocationY, Depth, Height) },
         };
-
-        if (permute)
-        {
-            for (int i = 0; i < 4; i++)
-                Debug.Log(uvIndices[Face.Bottom][quadPermutations[18][i]]);
-            Debug.Log("best: ^ ");
-        }
     }
-
-    static int tick = 0;
-    bool permute = false;
 
     // Update is called once per frame
     void Update()
@@ -112,27 +72,10 @@ public class PrismController : MonoBehaviour
             Debug.Log("uvs is null");
             return;
         }
-        if (permute)
-        {
-            const int refreshTickRate = 40;
-            tick = (tick + 1) % refreshTickRate;
-            if (tick % refreshTickRate == 0)
-            {
-                permutation = (permutation + 1) % quadPermutations.Length;
-                Debug.Log(permutation);
-            }
-        }
         foreach (Face face in System.Enum.GetValues(typeof(Face)))
         {
-            if (permute && face == Face.Bottom)
-            {
-                for (int i = 0; i < 4; i++)
-                    uvs[uvIndices[face][quadPermutations[permutation][i]]] = Utils.HelperFunctions.NormalizeToSkin(Rect.NormalizedToPoint(skinMap[face], corners[i]));
-            } else
-            {
-                for (int i = 0; i < 4; i++)
-                    uvs[uvIndices[face][i]] = Utils.HelperFunctions.NormalizeToSkin(Rect.NormalizedToPoint(skinMap[face], corners[i]));
-            }
+            for (int i = 0; i < 4; i++)
+                uvs[uvIndices[face][i]] = Utils.HelperFunctions.NormalizeToSkin(Rect.NormalizedToPoint(skinMap[face], corners[i]));
         }
         meshFilter.mesh.uv = uvs;
     }
