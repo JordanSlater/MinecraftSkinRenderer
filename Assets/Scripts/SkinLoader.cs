@@ -14,16 +14,30 @@ public class SkinLoader : MonoBehaviour
 
     private DateTime lastFileTimeStamp = DateTime.MinValue;
 
-    private string filePath;
+    private string filePath = null;
 
     public string StatusMessage = "No skin to load.";
 
-    public bool UseAlexVariant;
+    private bool loadDefaultSkin = true;
+    private bool useAlexVariant;
+    public bool UseAlexVariant
+    {
+        get => useAlexVariant;
+        set {
+            if (useAlexVariant != value)
+                ReloadSkin();
+            useAlexVariant = value;
+        }
+    }
+
+    private const string SteveLocation = "Assets/TestSkins/steve_skin.png";
+    private const string AlexLocation = "Assets/TestSkins/alex_skin.png";
 
     public void SetFilePath(string newFilePath)
     {
         filePath = newFilePath;
         lastFileTimeStamp = DateTime.MinValue;
+        ReloadSkin();
     }
 
     // Start is called before the first frame update
@@ -31,26 +45,39 @@ public class SkinLoader : MonoBehaviour
     {
         skin = new Texture2D(Constants.ExpectedWidth, Constants.ExpectedHeight);
         skin.filterMode = FilterMode.Point;
-
-        // filePath = type one here to load on start
-        // skinLoaded = false;
     }
 
     private const float refreshRate = 0.2f;
     private const int maxFileReads = 5;
     private int numSkinLoads = 0;
     private float lastFileRead = 0;
-    private bool skinLoaded = true;
+    private bool skinLoaded = false;
+
+    private void ReloadSkin()
+    {
+        Debug.Log("Called ReloadSkin");
+        numSkinLoads = 0;
+        skinLoaded = false;
+    }
 
     // Update is called once per frame
     void Update()
     {
+        string toLoad = filePath;
         if (ShouldReadFile(out DateTime fileTimeStamp))
         {
             StatusMessage = "Skin found, loading ...";
             lastFileTimeStamp = fileTimeStamp;
-            numSkinLoads = 0;
-            skinLoaded = false;
+            loadDefaultSkin = false;
+            ReloadSkin();
+        }
+
+        if (!skinLoaded && loadDefaultSkin)
+        {
+            toLoad = SteveLocation;
+            if (UseAlexVariant)
+                toLoad = AlexLocation;
+            ReloadSkin();
         }
 
         if (!skinLoaded)
@@ -58,13 +85,13 @@ public class SkinLoader : MonoBehaviour
             if (numSkinLoads < maxFileReads && Time.time - lastFileRead > refreshRate)
             {
                 lastFileRead = Time.time;
-                byte[] fileData = GetFileBytes();
+                byte[] fileData = GetFileBytes(toLoad);
                 
                 if (FileDataWouldMakeValidSkin(fileData))
                 {
                     skin.LoadImage(fileData);
                     SkinMaterial.SetTexture("_MainTex", skin);
-                    StatusMessage = "Loaded skin successfully.";
+                    StatusMessage = $"Loaded skin {filePath} successfully.";
                     skinLoaded = true;
                 }
                 numSkinLoads++;
@@ -81,7 +108,8 @@ public class SkinLoader : MonoBehaviour
         fileTimeStamp = new DateTime();
         if (System.String.IsNullOrEmpty(filePath))
         {
-            StatusMessage = "No file specified.";
+            StatusMessage = "No file specified, loading default skin";
+            loadDefaultSkin = true;
             return false;
         }
         if (!File.Exists(filePath))
@@ -95,7 +123,7 @@ public class SkinLoader : MonoBehaviour
         return (DateTime.Compare(fileTimeStamp, lastFileTimeStamp) == 1);
     }
 
-    private byte[] GetFileBytes()
+    private static byte[] GetFileBytes(string filePath)
     {
         byte[] bytes = null;
         try

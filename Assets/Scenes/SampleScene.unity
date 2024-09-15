@@ -990,6 +990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationController: {fileID: 1441547325}
+  helpTexture: {fileID: 2800000, guid: 094add86b53008347ad0e158794214b8, type: 3}
 --- !u!114 &705722846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1003,6 +1004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkinMaterial: {fileID: 2100000, guid: c803b1f47e88c154aabade293d25c18d, type: 2}
+  StatusMessage: No skin to load.
   UseAlexVariant: 0
 --- !u!4 &705722847
 Transform:
@@ -1831,6 +1833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 3
+  ableToRotate: 1
 --- !u!4 &1460774110 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8245567315514456760, guid: b9dfe4e226f0ed44390aa5d29edabee6,
