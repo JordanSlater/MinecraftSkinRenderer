@@ -55,7 +55,6 @@ public class SkinLoader : MonoBehaviour
 
     private void ReloadSkin()
     {
-        Debug.Log("Called ReloadSkin");
         numSkinLoads = 0;
         skinLoaded = false;
     }
@@ -77,7 +76,6 @@ public class SkinLoader : MonoBehaviour
             toLoad = SteveLocation;
             if (UseAlexVariant)
                 toLoad = AlexLocation;
-            ReloadSkin();
         }
 
         if (!skinLoaded)
