@@ -945,7 +945,7 @@ PrefabInstance:
     - target: {fileID: 8245567315514456764, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
       propertyPath: Width
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8245567315514456764, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
@@ -1005,7 +1005,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkinMaterial: {fileID: 2100000, guid: c803b1f47e88c154aabade293d25c18d, type: 2}
   StatusMessage: No skin to load.
-  UseAlexVariant: 0
 --- !u!4 &705722847
 Transform:
   m_ObjectHideFlags: 0
@@ -1503,7 +1502,7 @@ PrefabInstance:
     - target: {fileID: 8245567315514456764, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
       propertyPath: SkinLocationX
-      value: 51
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 8245567315514456764, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
@@ -1513,7 +1512,7 @@ PrefabInstance:
     - target: {fileID: 8245567315514456764, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
       propertyPath: Width
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8245567315514456764, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
@@ -1935,7 +1934,7 @@ PrefabInstance:
     - target: {fileID: 8245567315514456764, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
       propertyPath: SkinLocationX
-      value: 43
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 8245567315514456764, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
@@ -2054,7 +2053,7 @@ PrefabInstance:
     - target: {fileID: 8245567315514456764, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
       propertyPath: SkinLocationX
-      value: 43
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 8245567315514456764, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
