@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,17 +14,18 @@ public class PrismController : MonoBehaviour
         Left, // the character's left
         Right, // the character's right
     };
+    private static Array faces = System.Enum.GetValues(typeof(Face));
 
     private Dictionary<Face, Rect> skinMap;
 
-    private Vector2[] corners = new Vector2[] {
+    private static readonly Vector2[] corners = new Vector2[] {
         new Vector2(0, 0),
         new Vector2(1, 0),
         new Vector2(0, 1),
         new Vector2(1, 1),
     };
 
-    private Dictionary<Face, int[]> uvIndices = new Dictionary<Face, int[]>
+    private static readonly Dictionary<Face, int[]> uvIndices = new Dictionary<Face, int[]>
     {
         { Face.Front, new int[]{ 0, 1, 2, 3 } },
         { Face.Top, new int[]{ 8, 9, 4, 5 } },
@@ -60,23 +62,56 @@ public class PrismController : MonoBehaviour
             { Face.Left, new Rect(SkinLocationX + Width, SkinLocationY, Depth, Height) },
             { Face.Right, new Rect(SkinLocationX - Depth, SkinLocationY, Depth, Height) },
         };
+        meshFilter.mesh.uv = PopulateExternalUVs(meshFilter?.mesh?.uv, skinMap);
+        PopulateInternalUVs(transform.Find("Internal"), skinMap);
+    }
+
+    private static void PopulateInternalUVs(Transform internalFacesObject, Dictionary<Face, Rect> skinMap)
+    {
+        if (internalFacesObject == null)
+            throw new NullReferenceException("internalFacesObject is null");
+        Dictionary<Face, MeshFilter> internalMeshes = MapInternalFaceObjectsToFaces(internalFacesObject);
+        foreach (Face face in faces)
+        {
+            var uvs = internalMeshes[face]?.mesh?.uv;
+            if (uvs == null)
+                throw new NullReferenceException("uvs is null for internal faces");
+            for (int i = 0; i < 4; i++)
+                uvs[i] = Utils.HelperFunctions.NormalizeToSkin(Rect.NormalizedToPoint(skinMap[face], corners[i]));
+            internalMeshes[face].mesh.uv = uvs;
+        }
+    }
+
+    private static Dictionary<Face, MeshFilter> MapInternalFaceObjectsToFaces(Transform internalFacesObject)
+    {
+        Dictionary<Face, MeshFilter> internalMeshes = new Dictionary<Face, MeshFilter>();
+        foreach (Face face in faces)
+        {
+            var faceObject = internalFacesObject.Find(face.ToString());
+            var meshFilter = faceObject.GetComponent<MeshFilter>();
+            internalMeshes[face] = meshFilter;
+            if (meshFilter == null)
+                throw new NullReferenceException("meshFilter is null");
+        }
+        if (internalMeshes.Count != faces.Length)
+            throw new NullReferenceException("not all internal meshes found");
+        return internalMeshes;
+    }
+
+    private static Vector2[] PopulateExternalUVs(Vector2[] uvs, Dictionary<Face, Rect> skinMap)
+    {
+        if (uvs == null)
+            throw new NullReferenceException("uvs is null for external faces");
+        foreach (Face face in faces)
+        {
+            for (int i = 0; i < 4; i++)
+                uvs[uvIndices[face][i]] = Utils.HelperFunctions.NormalizeToSkin(Rect.NormalizedToPoint(skinMap[face], corners[i]));
+        }
+        return uvs;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // TODO move back to Start when you're done
-        var uvs = meshFilter?.mesh?.uv;
-        if (uvs == null)
-        {
-            Debug.Log("uvs is null");
-            return;
-        }
-        foreach (Face face in System.Enum.GetValues(typeof(Face)))
-        {
-            for (int i = 0; i < 4; i++)
-                uvs[uvIndices[face][i]] = Utils.HelperFunctions.NormalizeToSkin(Rect.NormalizedToPoint(skinMap[face], corners[i]));
-        }
-        meshFilter.mesh.uv = uvs;
     }
 }

@@ -156,6 +156,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightLegMask
       objectReference: {fileID: 0}
+    - target: {fileID: 8245567315514456707, guid: b9dfe4e226f0ed44390aa5d29edabee6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8245567315514456760, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -264,6 +269,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Head
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245567315514456707, guid: b9dfe4e226f0ed44390aa5d29edabee6,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8245567315514456760, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
@@ -591,6 +601,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Body
       objectReference: {fileID: 0}
+    - target: {fileID: 8245567315514456707, guid: b9dfe4e226f0ed44390aa5d29edabee6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8245567315514456760, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -735,6 +750,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LeftLeg
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245567315514456707, guid: b9dfe4e226f0ed44390aa5d29edabee6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8245567315514456760, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
@@ -1189,6 +1209,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BodyMask
       objectReference: {fileID: 0}
+    - target: {fileID: 8245567315514456707, guid: b9dfe4e226f0ed44390aa5d29edabee6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8245567315514456760, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1309,6 +1334,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RightLeg
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245567315514456707, guid: b9dfe4e226f0ed44390aa5d29edabee6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8245567315514456760, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
@@ -2153,6 +2183,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadMask
       objectReference: {fileID: 0}
+    - target: {fileID: 8245567315514456707, guid: b9dfe4e226f0ed44390aa5d29edabee6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8245567315514456760, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2416,6 +2451,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LeftLegMask
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245567315514456707, guid: b9dfe4e226f0ed44390aa5d29edabee6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8245567315514456760, guid: b9dfe4e226f0ed44390aa5d29edabee6,
         type: 3}
