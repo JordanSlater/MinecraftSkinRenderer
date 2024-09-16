@@ -1025,6 +1025,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkinMaterial: {fileID: 2100000, guid: c803b1f47e88c154aabade293d25c18d, type: 2}
   StatusMessage: No skin to load.
+  SteveSkinTexture: {fileID: 2800000, guid: 8c4db3f857f6150449bebf2097085405, type: 3}
+  AlexSkinTexture: {fileID: 2800000, guid: a690a4589dc8623438815e7454f5c82c, type: 3}
 --- !u!4 &705722847
 Transform:
   m_ObjectHideFlags: 0
