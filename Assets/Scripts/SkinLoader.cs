@@ -30,8 +30,8 @@ public class SkinLoader : MonoBehaviour
         }
     }
 
-    private const string SteveLocation = "Assets/TestSkins/steve_skin.png";
-    private const string AlexLocation = "Assets/TestSkins/alex_skin.png";
+    private const string SteveLocation = "Assets/TestSkins/steve.png";
+    private const string AlexLocation = "Assets/TestSkins/alex.png";
 
     public void SetFilePath(string newFilePath)
     {
